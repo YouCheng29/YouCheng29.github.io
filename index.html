@@ -1167,44 +1167,56 @@
     <!-- Navigation -->
     <nav class="glass-nav sticky top-0 z-50 py-4 overflow-x-auto">
       <div class="container mx-auto px-4">
-        <div
-          class="flex md:flex-wrap md:justify-center gap-3 whitespace-nowrap overflow-x-auto scrollbar-hide"
-        >
-          <a href="#dates" class="nav-pill text-gray-700 hover:text-blue-600"
-            >📅 日期</a
+        <div class="relative">
+          <!-- 可滑動區塊 -->
+          <div
+            class="flex md:flex-wrap md:justify-center gap-3 whitespace-nowrap overflow-x-auto scrollbar-hide pr-6"
           >
-          <a href="#flights" class="nav-pill text-gray-700 hover:text-blue-600"
-            >✈️ 航班</a
-          >
-          <a href="#hotel" class="nav-pill text-gray-700 hover:text-blue-600"
-            >🛏️ 住宿</a
-          >
-          <a href="#church" class="nav-pill text-gray-700 hover:text-blue-600"
-            >⛪ 教會</a
-          >
-          <a
-            href="#transport"
-            class="nav-pill text-gray-700 hover:text-blue-600"
-            >🚇 交通</a
-          >
-          <a href="#weather" class="nav-pill text-gray-700 hover:text-blue-600"
-            >☀️ 天氣</a
-          >
-          <a
-            href="#checklist"
-            class="nav-pill text-gray-700 hover:text-blue-600"
-            >🧳 清單</a
-          >
-          <a
-            href="#reminders"
-            class="nav-pill text-gray-700 hover:text-blue-600"
-            >📌 提醒</a
-          >
-          <a
-            href="#references"
-            class="nav-pill text-gray-700 hover:text-blue-600"
-            >📚 參考資料</a
-          >
+            <a href="#dates" class="nav-pill text-gray-700 hover:text-blue-600"
+              >📅 日期</a
+            >
+            <a
+              href="#flights"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >✈️ 航班</a
+            >
+            <a href="#hotel" class="nav-pill text-gray-700 hover:text-blue-600"
+              >🛏️ 住宿</a
+            >
+            <a href="#church" class="nav-pill text-gray-700 hover:text-blue-600"
+              >⛪ 教會</a
+            >
+            <a
+              href="#transport"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >🚇 交通</a
+            >
+            <a
+              href="#weather"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >☀️ 天氣</a
+            >
+            <a
+              href="#checklist"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >🧳 清單</a
+            >
+            <a
+              href="#reminders"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >📌 提醒</a
+            >
+            <a
+              href="#references"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >📚 參考資料</a
+            >
+          </div>
+
+          <!-- 漸層遮罩（手機限定） -->
+          <div
+            class="absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-white to-transparent pointer-events-none md:hidden"
+          ></div>
         </div>
       </div>
     </nav>
@@ -1302,12 +1314,10 @@
               Heart of God Church
             </h3>
             <p class="text-indigo-700 mb-2">
-              📍 地址：115 Eunos Ave 3, Level 4 Imaginarium, Singapore
-              409839（近 Eunos MRT，東西線）
+              📍 地址：115 Eunos Ave 3, Level 4 Imaginarium, Singapore 409839(近
+              Eunos MRT，東西線)
             </p>
-            <p class="text-indigo-700">
-              🗓 8/9（六）、8/10（日）聚會（時間確認中）
-            </p>
+            <p class="text-indigo-700">🗓 8/9(六)、8/10(日)聚會(時間確認中)</p>
           </div>
         </div>
       </section>
@@ -1469,55 +1479,57 @@
           <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
             📍 地點快速總整理
           </h2>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead class="bg-gray-100">
+          <div class="overflow-x-auto rounded-lg border border-gray-200">
+            <table class="min-w-full text-sm text-gray-700">
+              <thead
+                class="bg-gradient-to-r from-purple-100 to-pink-100 text-gray-900"
+              >
                 <tr>
-                  <th class="px-4 py-2 text-left">地點</th>
-                  <th class="px-4 py-2 text-left">交通方式</th>
-                  <th class="px-4 py-2 text-left">備註</th>
+                  <th class="px-5 py-3 text-left font-semibold">地點</th>
+                  <th class="px-5 py-3 text-left font-semibold">交通方式</th>
+                  <th class="px-5 py-3 text-left font-semibold">備註</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="px-4 py-2">飯店 → Bugis MRT</td>
-                  <td class="px-4 py-2">步行約 10 分鐘</td>
-                  <td class="px-4 py-2">-</td>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">飯店 → Bugis MRT</td>
+                  <td class="px-5 py-3">步行約 10 分鐘</td>
+                  <td class="px-5 py-3">-</td>
                 </tr>
-                <tr>
-                  <td class="px-4 py-2">Bugis → 教會</td>
-                  <td class="px-4 py-2">
-                    MRT 約 10 分鐘、MRT步行到教會約10分鐘
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">Bugis → 教會</td>
+                  <td class="px-5 py-3">
+                    MRT 約 10 分鐘、MRT 步行到教會約 10 分鐘
                   </td>
-                  <td class="px-4 py-2">
+                  <td class="px-5 py-3">
                     武吉士 Bugis-EW12 → 巴耶利峇 Paya Lebar-EW8
                   </td>
                 </tr>
-                <tr>
-                  <td class="px-4 py-2">飯店 → 樟宜機場</td>
-                  <td class="px-4 py-2">MRT 約 50 分鐘</td>
-                  <td class="px-4 py-2">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">飯店 → 樟宜機場</td>
+                  <td class="px-5 py-3">MRT 約 50 分鐘</td>
+                  <td class="px-5 py-3">
                     武吉士 Bugis-EW12 → 丹那美拉 Tanah Merah-EW4 → 樟宜機場-CG2
                   </td>
                 </tr>
-                <tr>
-                  <td class="px-4 py-2">飯店 → 濱海灣花園</td>
-                  <td class="px-4 py-2">MRT 約 25 分鐘</td>
-                  <td class="px-4 py-2">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">飯店 → 濱海灣花園</td>
+                  <td class="px-5 py-3">MRT 約 25 分鐘</td>
+                  <td class="px-5 py-3">
                     梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 海灣舫 Bayfront-DT16
                   </td>
                 </tr>
-                <tr>
-                  <td class="px-4 py-2">飯店 → 牛車水</td>
-                  <td class="px-4 py-2">MRT 約 25 分鐘</td>
-                  <td class="px-4 py-2">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">飯店 → 牛車水</td>
+                  <td class="px-5 py-3">MRT 約 25 分鐘</td>
+                  <td class="px-5 py-3">
                     梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 牛車水 Chinatown-DT19
                   </td>
                 </tr>
-                <tr>
-                  <td class="px-4 py-2">飯店 → 聖淘沙</td>
-                  <td class="px-4 py-2">MRT + 公車約 60 分鐘</td>
-                  <td class="px-4 py-2">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-5 py-3">飯店 → 聖淘沙</td>
+                  <td class="px-5 py-3">MRT + 公車約 60 分鐘</td>
+                  <td class="px-5 py-3">
                     Bugis → HarbourFront → Sentosa Express
                   </td>
                 </tr>
@@ -1531,8 +1543,27 @@
       <section id="reminders" class="mb-12">
         <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
           <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-            📌 小提醒總整理
+            📌 小提醒
           </h2>
+
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              ⚠️ 電器電壓提醒
+            </h3>
+            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+              <ul
+                class="text-yellow-700 text-sm space-y-2 list-disc pl-5"
+                style="text-indent: -0.5em; padding-left: 1.2em"
+              >
+                <li>新加坡電壓230V，插頭為英式三孔(Type G)</li>
+                <li>
+                  台灣吹風機、電棒捲等高功率電器若不支援220V以上，請勿攜帶。
+                </li>
+                <li>手機、筆電等請確認變壓器支援100–240V。</li>
+                <li>建議自備萬國轉接頭。</li>
+              </ul>
+            </div>
+          </div>
 
           <!-- Flight Regulations -->
           <div class="mb-6">
@@ -1567,12 +1598,21 @@
                 </ul>
               </div>
             </div>
-            <div class="mt-4 bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <p class="text-blue-800"><strong>行李限制：</strong></p>
-              <p class="text-blue-700">• 手提行李：限 7 公斤</p>
-              <p class="text-blue-700">
-                • 托運行李：限 1 件、23 公斤，超重需加價
-              </p>
+            <div
+              class="mt-4 bg-blue-50 p-6 rounded-lg border border-blue-200 max-w-md mx-auto"
+            >
+              <p class="text-blue-800 font-semibold mb-3">行李限制：</p>
+              <ul class="list-disc list-inside text-blue-700 space-y-2 mb-4">
+                <li>手提行李：限 7 公斤</li>
+                <li>托運行李：限1件(23公斤)超重加價</li>
+              </ul>
+              <a
+                href="https://www.starlux-airlines.com/zh-TW/check-in-fly/baggage-information/general"
+                target="_blank"
+                class="inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
+              >
+                查看行李規定
+              </a>
             </div>
           </div>
 
@@ -1609,33 +1649,39 @@
             <h3 class="text-xl font-semibold text-gray-800 mb-3">
               🛂 入境資料可事先填寫
             </h3>
-            <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
-              <p class="text-purple-800 mb-2">
-                <strong>SG Arrival Card</strong> - 出發前72小時內填寫
+            <div class="bg-purple-50 p-6 rounded-xl border border-purple-200">
+              <p class="text-purple-800 mb-3 font-semibold text-base">
+                SG Arrival Card - 出發前72小時內填寫
               </p>
               <a
                 href="https://panpanlife.com/sgac/"
                 target="_blank"
-                class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all mb-4 mt-2"
+                class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all mb-5"
               >
                 🔗 入境填寫教學
               </a>
-              <p class="text-purple-700 mb-2">
-                <strong>填寫所需資料：</strong>
+              <p
+                class="text-purple-700 mb-2 text-sm font-semibold leading-relaxed"
+              >
+                填寫所需資料：
               </p>
-              <ul class="text-purple-700 space-y-1 mb-3">
+              <ul
+                class="text-purple-700 text-sm leading-relaxed space-y-1 mb-4"
+              >
                 <li>• 護照</li>
                 <li>• 航班編號（去程：JX771）</li>
                 <li>• 飯店名稱（ibis Singapore on Bencoolen）</li>
                 <li>• 飯店地址（170 Bencoolen St, Singapore 189657）</li>
                 <li>• 健康聲明（勾選即可）</li>
               </ul>
-              <p class="text-purple-700">
-                ✅ 一人一份，不需列印，填好後系統會寄
-                Email，入境時出示手機畫面或 QR code 即可
+              <p class="text-purple-700 text-sm leading-relaxed mb-2">
+                ✅ 一人一份，不需列印，填好後系統會寄 Email
               </p>
-              <p class="text-purple-700">
-                ❗ 未填寫也可以入境，但現場需要排隊補寫，比較麻煩
+              <p class="text-purple-700 text-sm leading-relaxed mb-2">
+                ✅ 入境時走到自動通關機台，掃描護照
+              </p>
+              <p class="text-purple-700 text-sm leading-relaxed">
+                ❗ 未填寫也可以入境，但現場需要排隊補寫
               </p>
             </div>
           </div>
