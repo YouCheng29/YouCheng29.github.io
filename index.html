@@ -10,7 +10,19 @@
     />
     <title>新加坡參訪行前手冊 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"
+      defer
+    ></script>
     <style>
+      [x-cloak] {
+        display: none !important;
+      }
       @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap");
       body {
         font-family: "Noto Sans TC", sans-serif;
@@ -1540,7 +1552,7 @@
       </section>
 
       <!-- Location Quick Reference -->
-      <section class="mb-12">
+      <!-- <section class="mb-12">
         <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
           <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
             📍 地點快速總整理
@@ -1596,6 +1608,255 @@
                   <td class="px-5 py-3">飯店 → 聖淘沙</td>
                   <td class="px-5 py-3">MRT + 公車約 60 分鐘</td>
                   <td class="px-5 py-3">
+                    Bugis → HarbourFront → Sentosa Express
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section> -->
+      <section id="places" class="mb-12">
+        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+            📍 地點快速總整理
+          </h2>
+
+          <div class="overflow-x-auto rounded-lg border border-gray-200">
+            <table class="min-w-full text-sm text-gray-700">
+              <thead
+                class="bg-gradient-to-r from-purple-100 to-pink-100 text-gray-900 hidden md:table-header-group"
+              >
+                <tr>
+                  <th class="px-5 py-3 text-left font-semibold">地點</th>
+                  <th class="px-5 py-3 text-left font-semibold">交通方式</th>
+                  <th class="px-5 py-3 text-left font-semibold">備註</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <!-- 1 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: false }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      飯店 → Bugis MRT
+                      <div class="md:hidden text-sm text-gray-500">
+                        步行約 10 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      -
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">步行約 10 分鐘</td>
+                  <td class="px-5 py-3 hidden md:table-cell">-</td>
+                </tr>
+
+                <!-- 2 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: false }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      Bugis → 教會
+                      <div class="md:hidden text-sm text-gray-500">
+                        MRT 約 10 分鐘、步行約 10 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      武吉士 Bugis-EW12 → 巴耶利峇 Paya Lebar-EW8
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    MRT 約 10 分鐘、MRT 步行到教會約 10 分鐘
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    武吉士 Bugis-EW12 → 巴耶利峇 Paya Lebar-EW8
+                  </td>
+                </tr>
+
+                <!-- 3 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: false }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      飯店 → 樟宜機場
+                      <div class="md:hidden text-sm text-gray-500">
+                        MRT 約 50 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      武吉士 Bugis-EW12 → 丹那美拉 Tanah Merah-EW4 →
+                      樟宜機場-CG2
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">MRT 約 50 分鐘</td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    武吉士 Bugis-EW12 → 丹那美拉 Tanah Merah-EW4 → 樟宜機場-CG2
+                  </td>
+                </tr>
+
+                <!-- 4 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: false }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      飯店 → 濱海灣花園
+                      <div class="md:hidden text-sm text-gray-500">
+                        MRT 約 25 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 海灣舫
+                      Bayfront-DT16
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">MRT 約 25 分鐘</td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 海灣舫 Bayfront-DT16
+                  </td>
+                </tr>
+
+                <!-- 5 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: true }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      飯店 → 牛車水
+                      <div class="md:hidden text-sm text-gray-500">
+                        MRT 約 25 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 牛車水
+                      Chinatown-DT19
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">MRT 約 25 分鐘</td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 牛車水 Chinatown-DT19
+                  </td>
+                </tr>
+
+                <!-- 6 -->
+                <tr
+                  class="block md:table-row hover:bg-gray-50"
+                  x-data="{ open: false }"
+                >
+                  <td class="px-5 py-3 font-medium">
+                    <div>
+                      飯店 → 聖淘沙
+                      <div class="md:hidden text-sm text-gray-500">
+                        MRT + 公車約 60 分鐘
+                      </div>
+                      <button
+                        @click="open = !open"
+                        class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                      >
+                        <i
+                          class="fa-solid transition-transform duration-300"
+                          :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                        ></i>
+                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                      </button>
+                    </div>
+                    <div
+                      x-show="open"
+                      x-collapse
+                      x-cloak
+                      class="md:hidden mt-2 text-sm text-gray-600"
+                    >
+                      Bugis → HarbourFront → Sentosa Express
+                    </div>
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">
+                    MRT + 公車約 60 分鐘
+                  </td>
+                  <td class="px-5 py-3 hidden md:table-cell">
                     Bugis → HarbourFront → Sentosa Express
                   </td>
                 </tr>
