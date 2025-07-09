@@ -406,6 +406,9 @@
       .mt-4 {
         margin-top: 1rem;
       }
+      .block {
+        display: block;
+      }
       .inline-block {
         display: inline-block;
       }
@@ -537,6 +540,10 @@
         --tw-bg-opacity: 1;
         background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1));
       }
+      .bg-blue-600 {
+        --tw-bg-opacity: 1;
+        background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+      }
       .bg-gray-100 {
         --tw-bg-opacity: 1;
         background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -552,6 +559,10 @@
       .bg-green-50 {
         --tw-bg-opacity: 1;
         background-color: rgb(240 253 244 / var(--tw-bg-opacity, 1));
+      }
+      .bg-green-600 {
+        --tw-bg-opacity: 1;
+        background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
       }
       .bg-indigo-50 {
         --tw-bg-opacity: 1;
@@ -766,6 +777,14 @@
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 150ms;
       }
+      .hover\:bg-blue-700:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+      }
+      .hover\:bg-green-700:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
+      }
       .hover\:bg-purple-700:hover {
         --tw-bg-opacity: 1;
         background-color: rgb(126 34 206 / var(--tw-bg-opacity, 1));
@@ -858,6 +877,11 @@
             class="px-3 py-2 text-sm md:text-base text-gray-700 hover:text-blue-600 transition-colors"
             >📌 提醒</a
           >
+          <a
+            href="#references"
+            class="px-3 py-2 text-sm md:text-base text-gray-700 hover:text-blue-600 transition-colors"
+            >📚 參考資料</a
+          >
         </div>
       </div>
     </nav>
@@ -948,7 +972,8 @@
               Heart of God Church
             </h3>
             <p class="text-indigo-700 mb-2">
-              📍 地址：Eunos Ave 3（近 Eunos MRT，東西線）
+              📍 地址：115 Eunos Ave 3, Level 4 Imaginarium, Singapore
+              409839（近 Eunos MRT，東西線）
             </p>
             <p class="text-indigo-700">
               🗓 8/9（六）、8/10（日）聚會（時間確認中）
@@ -1157,6 +1182,13 @@
             <h3 class="text-xl font-semibold text-gray-800 mb-3">
               ✈️ 飛機相關注意事項
             </h3>
+            <a
+              href="https://www.starlux-airlines.com/zh-TW/check-in-fly/baggage-information/general"
+              target="_blank"
+              class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors mb-4"
+            >
+              🔗 星宇規定
+            </a>
             <div class="grid md:grid-cols-2 gap-4">
               <div class="bg-green-50 p-4 rounded-lg border border-green-200">
                 <h4 class="font-semibold text-green-800 mb-2">✅ 可手提上機</h4>
@@ -1203,9 +1235,22 @@
               <p class="text-orange-800 mb-2">
                 <strong>請自行購買 SIM 卡或 eSIM</strong>
               </p>
-              <p class="text-orange-700 mb-2">
-                建議平台：Klook、KKday 或電信漫遊方案
-              </p>
+              <p class="text-orange-700 mb-2">建議平台：</p>
+              <div class="space-y-1">
+                <a
+                  href="https://www.klook.com/zh-TW/wifi-sim-card/?region=30-Singapore"
+                  target="_blank"
+                  class="block text-blue-600 hover:text-blue-800 underline"
+                  >Klook 新加坡 eSIM/SIM</a
+                >
+                <a
+                  href="https://www.kkday.com/zh-tw/blog/153300/asia-singapore-internet?srsltid=AfmBOop0QXRiwdnVwmWveNhsvAJVd6ZPNTyWDjtaLOvjkM-aL7R8GAkQ#xin_jia_poSIM_ka_tui_jianSingtel_dian_xin"
+                  target="_blank"
+                  class="block text-blue-600 hover:text-blue-800 underline"
+                  >KKday</a
+                >
+                <p class="text-orange-700">中華/遠傳/台哥大等電信漫遊方案</p>
+              </div>
             </div>
           </div>
 
@@ -1218,11 +1263,29 @@
               <p class="text-purple-800 mb-2">
                 <strong>SG Arrival Card</strong> - 出發前72小時內填寫
               </p>
+              <a
+                href="https://panpanlife.com/sgac/"
+                target="_blank"
+                class="inline-block bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-colors mb-3"
+              >
+                🔗 入境填寫教學
+              </a>
               <p class="text-purple-700 mb-2">
-                填寫所需：護照、航班編號（JX771）、飯店資訊
+                <strong>填寫所需資料：</strong>
+              </p>
+              <ul class="text-purple-700 space-y-1 mb-3">
+                <li>• 護照</li>
+                <li>• 航班編號（去程：JX771）</li>
+                <li>• 飯店名稱（ibis Singapore on Bencoolen）</li>
+                <li>• 飯店地址（170 Bencoolen St, Singapore 189657）</li>
+                <li>• 健康聲明（勾選即可）</li>
+              </ul>
+              <p class="text-purple-700">
+                ✅ 一人一份，不需列印，填好後系統會寄
+                Email，入境時出示手機畫面或 QR code 即可
               </p>
               <p class="text-purple-700">
-                ✅ 一人一份，填好後出示手機 QR code 即可
+                ❗ 未填寫也可以入境，但現場需要排隊補寫，比較麻煩
               </p>
             </div>
           </div>
@@ -1260,8 +1323,16 @@
           <!-- Budget Reference -->
           <div>
             <h3 class="text-xl font-semibold text-gray-800 mb-3">
-              💰 費用參考
+              💰 新加坡自由行費用參考
             </h3>
+            <p class="text-gray-700 mb-3">自由行安排，請參考以下預算估算：</p>
+            <a
+              href="https://tw.trip.com/guide/info/%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%97%85%E9%81%8A%E8%B2%BB%E7%94%A8.html"
+              target="_blank"
+              class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors mb-4"
+            >
+              🔗 新加坡花費介紹
+            </a>
             <div class="bg-green-50 p-4 rounded-lg border border-green-200">
               <p class="text-green-800 mb-2">
                 <strong>平均日常開銷（估算）：</strong>
@@ -1274,6 +1345,57 @@
               <p class="text-green-800 mt-2">
                 <strong>建議每日預算：約 S$50–80</strong>
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reference Links -->
+      <section id="references" class="mb-12">
+        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+            📚 參考資料
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-2">
+              <a
+                href="https://vivianjourney.tw/singapore-transportation/#2%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%A9%9F%E5%A0%B4%E4%BA%A4%E9%80%9A%EF%BC%9A%E6%A9%9F%E5%A0%B4%E5%B7%B4%E5%A3%AB"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >新加坡機場交通指南</a
+              >
+              <a
+                href="https://www.dcard.tw/f/travel/p/242681555"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >Dcard 新加坡旅遊分享1</a
+              >
+              <a
+                href="https://www.dcard.tw/f/travel/p/253750469"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >Dcard 新加坡旅遊分享2</a
+              >
+              <a
+                href="https://www.perplexity.ai/search/qu-xin-jia-po-lu-you-de-ping-j-lmN5vey.RyOqWZViXZox3g"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >新加坡旅遊平均費用</a
+              >
+              <a
+                href="https://wiho-esim.com/blogs/wiho-blog/esim-for-singapore-tips?srsltid=AfmBOoqKekf0h1fz2pmlftruwYfsDPZPavs2-UGmUi4x_PHQGQhodDLC"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >新加坡 eSIM 使用指南</a
+              >
+            </div>
+            <div class="space-y-2">
+              <a
+                href="https://lovetoeat.blog/2024/08/15/singaporetrip/"
+                target="_blank"
+                class="block text-blue-600 hover:text-blue-800 underline"
+                >新加坡旅遊部落格分享</a
+              >
             </div>
           </div>
         </div>
@@ -1331,7 +1453,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'95c4ea597164f1cc',t:'MTc1MjAzMzYzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'95c55b8f40b8f1b8',t:'MTc1MjAzODI3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
@@ -1372,3 +1494,5 @@
     ></iframe>
   </body>
 </html>
+Ï
+Ï
