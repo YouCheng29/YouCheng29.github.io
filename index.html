@@ -33,6 +33,9 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"
       defer
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
     <style>
       [x-cloak] {
         display: none !important;
@@ -1318,6 +1321,20 @@
               2025/8/8(五)～8/12(二)
             </p>
           </div>
+          <div class="bg-cyan-50 border-l-4 border-blue-400 p-4 rounded mt-4">
+            <p class="text-gray-700 mt-1 font-bold">
+              <strong>集合時間：</strong>2025/8/8(五) 05:20
+            </p>
+            <p class="text-gray-700 mt-2 font-bold">
+              <strong>集合地點：</strong>教會對面7-11
+            </p>
+            <p class="text-red-700 mt-2 font-bold">
+              <strong class="block md:inline">注意事項：</strong>
+              <span class="block md:inline">
+                請務必準時到達，並攜帶有效護照，最重要的是保持愉快的心情！
+              </span>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1336,7 +1353,7 @@
             <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
               <h3 class="font-semibold text-orange-800 mb-2">回程航班</h3>
               <p class="text-orange-700">JX772</p>
-              <p class="text-orange-700">14:00 起飛 → 約18:50抵達桃園機場</p>
+              <p class="text-orange-700">14:00 起飛 → 約 18:50 抵達桃園機場</p>
               <p class="text-sm text-orange-600 mt-1">
                 ⚠️ 需於 11:30 前抵達機場辦理登機
               </p>
@@ -1354,21 +1371,17 @@
 
       <!-- Weather -->
       <section id="weather" class="bg-white rounded-2xl shadow-xl p-6 mb-12">
-        <h2 class="text-2xl font-bold text-blue-700 mb-6 inline-block pb-1">
+        <h2
+          class="text-2xl font-bold text-blue-700 mb-6 border-b-4 border-blue-300 inline-block pb-1"
+        >
           📍 新加坡天氣預報
         </h2>
 
         <!-- 今日天氣 -->
-        <h3 class="text-xl font-semibold text-blue-600 mb-2">☀️ 今日天氣</h3>
-        <div class="bg-blue-50 rounded-xl p-4 mb-8">
-          <div class="space-y-1 text-gray-700">
-            <p>
-              🕓 <strong>時間：</strong>2025-07-10 12:00 ～ 2025-07-11 12:00
-            </p>
-            <p>🌦️ <strong>天氣：</strong>雷陣雨</p>
-            <p>🌡️ <strong>溫度：</strong>25°C ～ 34°C</p>
-            <p>💧 <strong>濕度：</strong>55% ～ 95%</p>
-            <p>💨 <strong>陣風：</strong>10 ～ 18 m/s</p>
+        <div id="todayWeather" class="bg-blue-50 rounded-xl p-4 mb-8">
+          <h3 class="text-xl font-semibold text-blue-600 mb-2">☀️ 今日天氣</h3>
+          <div id="today-weather" class="space-y-1 text-gray-700">
+            載入中...
           </div>
         </div>
 
@@ -1377,53 +1390,29 @@
           <h3 class="text-xl font-semibold text-blue-600 mb-4">
             📅 未來四天天氣
           </h3>
-          <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-2">
-            <!-- Day 1 -->
-            <div class="bg-white rounded-lg border shadow-sm p-4">
-              <p class="text-sm text-gray-500 mb-1">7/11（五）</p>
-              <p class="text-lg font-bold">🌩️ 雷陣雨</p>
-              <p class="text-gray-600 mt-1">🌡️ 25°～33°</p>
-            </div>
-            <!-- Day 2 -->
-            <div class="bg-white rounded-lg border shadow-sm p-4">
-              <p class="text-sm text-gray-500 mb-1">7/12（六）</p>
-              <p class="text-lg font-bold">🌦️ 短暫陣雨</p>
-              <p class="text-gray-600 mt-1">🌡️ 26°～34°</p>
-            </div>
-            <!-- Day 3 -->
-            <div class="bg-white rounded-lg border shadow-sm p-4">
-              <p class="text-sm text-gray-500 mb-1">7/13（日）</p>
-              <p class="text-lg font-bold">⛅ 多雲偶雨</p>
-              <p class="text-gray-600 mt-1">🌡️ 26°～33°</p>
-            </div>
-            <!-- Day 4 -->
-            <div class="bg-white rounded-lg border shadow-sm p-4">
-              <p class="text-sm text-gray-500 mb-1">7/14（一）</p>
-              <p class="text-lg font-bold">🌧️ 午後雷雨</p>
-              <p class="text-gray-600 mt-1">🌡️ 25°～32°</p>
-            </div>
-          </div>
-
           <div
-            class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-8"
+            id="future-weather-list"
+            class="grid gap-4 sm:grid-cols-2 md:grid-cols-2"
           >
-            <div>
-              <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
-              <div
-                class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700"
-              >
-                <span>🌂 雨傘</span>
-                <span>🧴 防曬</span>
-                <span>👒 帽子</span>
-                <span>👕 輕便衣物</span>
-                <span>👟 透氣鞋子</span>
-                <span>💧 水壺</span>
-              </div>
-            </div>
-            <p class="text-yellow-700 mt-3">
-              ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
-            </p>
+            <!-- 自動填入 -->
           </div>
+        </div>
+
+        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-8">
+          <div>
+            <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700">
+              <span>🌂 雨傘</span>
+              <span>🧴 防曬</span>
+              <span>👒 帽子</span>
+              <span>👕 輕便衣物</span>
+              <span>👟 透氣鞋子</span>
+              <span>💧 水壺</span>
+            </div>
+          </div>
+          <p class="text-yellow-700 mt-3">
+            ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
+          </p>
         </div>
       </section>
 
@@ -2444,6 +2433,199 @@
         visibility: hidden;
       "
     ></iframe>
+    <script>
+      function formatDateTime(isoString) {
+        return dayjs(isoString).format("YYYY-MM-DD HH:mm");
+      }
+
+      // 🔹格式化時間區段：7/10 12:00 ～ 7/11 12:00
+      function formatTodayTime(start, end) {
+        const s = new Date(start);
+        const e = new Date(end);
+        return `${s.getMonth() + 1}/${s.getDate()} ${s.getHours()}:00 ～ ${
+          e.getMonth() + 1
+        }/${e.getDate()} ${e.getHours()}:00`;
+      }
+
+      const weekdayMap = {
+        Sunday: "日",
+        Monday: "一",
+        Tuesday: "二",
+        Wednesday: "三",
+        Thursday: "四",
+        Friday: "五",
+        Saturday: "六",
+      };
+
+      // 🔹格式化日期標籤：7/12（五）
+      function formatDateLabel(dateStr, dayText) {
+        const date = new Date(dateStr);
+        const weekday = weekdayMap[dayText];
+        return `${date.getMonth() + 1}/${date.getDate()}（${weekday}）`;
+      }
+
+      function zhForecastText(text) {
+        const map = {
+          "Thundery Showers": "雷陣雨",
+          Showers: "陣雨",
+          "Heavy Showers": "強烈陣雨",
+          "Light Showers": "小陣雨",
+          "Heavy Rain": "大雨",
+          "Light Rain": "小雨",
+          "Moderate Rain": "陣雨",
+          "Fair (Day)": "白天晴朗",
+          "Fair (Night)": "夜間晴朗",
+          "Partly Cloudy": "局部多雲",
+          "Partly Cloudy (Day)": "白天局部多雲",
+          "Partly Cloudy (Night)": "夜間局部多雲",
+          Cloudy: "多雲",
+          Overcast: "陰天",
+          Hazy: "霧霾",
+          Fog: "霧",
+          Sunny: "晴朗",
+          "Strong Winds, Showers, Thunder": "強風雷雨",
+          Windy: "有風",
+          Snow: "下雪",
+          "Passing Showers": "間歇性陣雨",
+        };
+        return map[text] || text;
+      }
+
+      function emojiForForecast(code) {
+        const map = {
+          CL: "☁️",
+          FG: "🌫️",
+          FN: "🌃",
+          FW: "☀️",
+          HZ: "🌫️",
+          HT: "⛈️",
+          HR: "🌧️",
+          HS: "🌧️",
+          LC: "🌤️",
+          LH: "🌫️",
+          LR: "🌦️",
+          LS: "🌦️",
+          OC: "🌥️",
+          PC: "⛅",
+          PN: "🌙⛅",
+          PS: "🌦️",
+          RA: "🌧️",
+          SH: "🌧️",
+          SK: "🌬️🌩️",
+          SN: "❄️",
+          SU: "☀️",
+          TL: "🌩️",
+          WC: "🌬️☁️",
+          WD: "🌬️",
+        };
+        return map[code] || "🌤️";
+      }
+
+      // 🔹取得今日天氣資料
+      async function fetchTodayWeather() {
+        try {
+          const res = await fetch(
+            "https://api-open.data.gov.sg/v2/real-time/api/twenty-four-hr-forecast"
+          );
+          const json = await res.json();
+          const record = json.data.records?.[0];
+          const general = record?.general;
+          const period = general?.validPeriod;
+          const temp = general?.temperature;
+          const humidity = general?.relativeHumidity;
+          const wind = general?.wind;
+          const forecast = general?.forecast;
+          if (!record || !general || !period || !temp || !humidity || !wind) {
+            throw new Error("資料格式不正確");
+          }
+          const container = document.getElementById("today-weather");
+          if (!general) {
+            container.innerHTML = `<p class="text-red-500">找不到今日天氣資料</p>`;
+            return;
+          }
+
+          const emojiMap = {
+            TL: "🌩️",
+            PC: "⛅",
+            PN: "🌙",
+            SU: "☀️",
+            HZ: "🌫️",
+            RA: "🌧️",
+            SH: "🌦️",
+            FG: "🌁",
+          };
+
+          const emoji = emojiForForecast(forecast.code);
+          const zhForecast = zhForecastText(forecast.text);
+
+          container.innerHTML = `
+            <p>🕓 <strong>時間：</strong>${formatTodayTime(
+              period.start,
+              period.end
+            )}</p>
+            <p>🌦️ <strong>天氣：</strong>${emoji} ${zhForecast}</p>
+            <p>🌡️ <strong>溫度：</strong>${temp.low}°C ～ ${temp.high}°C</p>
+            <p>💧 <strong>濕度：</strong>${humidity.low}% ～ ${
+            humidity.high
+          }%</p>
+            <p>💨 <strong>陣風：</strong>${wind.speed.low} ～ ${
+            wind.speed.high
+          } m/s（風向：${wind.direction}）</p>
+          `;
+        } catch (err) {
+          console.error("天氣資料取得失敗：", err);
+          document.getElementById(
+            "today-weather"
+          ).innerHTML = `<p class="text-red-500">今日天氣資料取得失敗</p>`;
+        }
+      }
+
+      // 🔹取得未來四天天氣資料
+      async function fetchFutureWeather() {
+        try {
+          const res = await fetch(
+            "https://api-open.data.gov.sg/v2/real-time/api/four-day-outlook"
+          );
+          const json = await res.json();
+          const records = json.data.records;
+          if (!records || records.length === 0) return;
+
+          const forecasts = records[0].forecasts;
+          const container = document.getElementById("future-weather-list");
+          container.innerHTML = "";
+
+          forecasts.forEach((f) => {
+            const dateLabel = formatDateLabel(f.timestamp, f.day);
+            const card = document.createElement("div");
+            const zhForecast = zhForecastText(f.forecast.text);
+
+            card.className = "bg-white rounded-lg border shadow-sm p-4";
+
+            card.innerHTML = `
+              <p class="text-sm text-gray-500 mb-1">${dateLabel}</p>
+              <p class="text-lg font-bold">${emojiForForecast(
+                f.forecast.code
+              )} ${zhForecast}</p>
+              <p class="text-gray-600 mt-1">🌡️ ${f.temperature.low}°～${
+              f.temperature.high
+            }°</p>
+            `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+          console.error("未來天氣取得失敗：", err);
+          document.getElementById(
+            "future-weather-list"
+          ).innerHTML = `<p class="text-red-500 col-span-2">無法載入未來四天天氣資料</p>`;
+        }
+      }
+
+      // 🔹頁面載入後自動執行
+      window.addEventListener("DOMContentLoaded", () => {
+        fetchTodayWeather();
+        fetchFutureWeather();
+      });
+    </script>
   </body>
 </html>
 Ï
