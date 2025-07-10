@@ -129,6 +129,57 @@
       .animate-bounceIn {
         animation: bounceIn 0.4s ease-out;
       }
+
+      .section-card {
+        position: relative;
+        background-color: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+      .section-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease-in-out;
+      }
+      .section-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 0.25rem;
+      }
+      .section-header::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 3rem;
+        height: 0.25rem;
+        background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        border-radius: 9999px;
+      }
+
+      @keyframes surpriseEnter {
+        0% {
+          opacity: 0;
+          transform: scale(0.6) translateY(20px);
+        }
+        60% {
+          transform: scale(1.05) translateY(-5px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+      .animate-surpriseEnter {
+        animation: surpriseEnter 0.6s ease-out;
+      }
     </style>
     <style>
       *,
@@ -1150,16 +1201,6 @@
   </head>
   <body class="bg-gray-50">
     <!-- Header -->
-    <!-- <header class="gradient-bg text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-5xl font-bold mb-2">
-            🇸🇬 新加坡參訪行前手冊
-          </h1>
-          <p class="text-xl opacity-90">2025年8月8日 - 8月12日</p>
-        </div>
-      </div>
-    </header> -->
     <header class="hero-gradient text-white py-20 relative">
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center">
@@ -1210,6 +1251,11 @@
               class="nav-pill text-gray-700 hover:text-blue-600"
               >✈️ 航班</a
             >
+            <a
+              href="#weather"
+              class="nav-pill text-gray-700 hover:text-blue-600"
+              >☀️ 天氣</a
+            >
             <a href="#hotel" class="nav-pill text-gray-700 hover:text-blue-600"
               >🛏️ 住宿</a
             >
@@ -1220,11 +1266,6 @@
               href="#transport"
               class="nav-pill text-gray-700 hover:text-blue-600"
               >🚇 交通</a
-            >
-            <a
-              href="#weather"
-              class="nav-pill text-gray-700 hover:text-blue-600"
-              >☀️ 天氣</a
             >
             <a
               href="#checklist"
@@ -1294,6 +1335,81 @@
           >
             查看行李規定
           </a>
+        </div>
+      </section>
+
+      <!-- Weather -->
+      <section id="weather" class="bg-white rounded-2xl shadow-xl p-6 mb-12">
+        <h2 class="text-2xl font-bold text-blue-700 mb-6 inline-block pb-1">
+          📍 新加坡天氣預報
+        </h2>
+
+        <!-- 今日天氣 -->
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">☀️ 今日天氣</h3>
+        <div class="bg-blue-50 rounded-xl p-4 mb-8">
+          <div class="space-y-1 text-gray-700">
+            <p>
+              🕓 <strong>時間：</strong>2025-07-10 12:00 ～ 2025-07-11 12:00
+            </p>
+            <p>🌦️ <strong>天氣：</strong>雷陣雨</p>
+            <p>🌡️ <strong>溫度：</strong>25°C ～ 34°C</p>
+            <p>💧 <strong>濕度：</strong>55% ～ 95%</p>
+            <p>💨 <strong>陣風：</strong>10 ～ 18 m/s</p>
+          </div>
+        </div>
+
+        <!-- 未來四天天氣 -->
+        <div>
+          <h3 class="text-xl font-semibold text-blue-600 mb-4">
+            📅 未來四天天氣
+          </h3>
+          <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-2">
+            <!-- Day 1 -->
+            <div class="bg-white rounded-lg border shadow-sm p-4">
+              <p class="text-sm text-gray-500 mb-1">7/11（五）</p>
+              <p class="text-lg font-bold">🌩️ 雷陣雨</p>
+              <p class="text-gray-600 mt-1">🌡️ 25°～33°</p>
+            </div>
+            <!-- Day 2 -->
+            <div class="bg-white rounded-lg border shadow-sm p-4">
+              <p class="text-sm text-gray-500 mb-1">7/12（六）</p>
+              <p class="text-lg font-bold">🌦️ 短暫陣雨</p>
+              <p class="text-gray-600 mt-1">🌡️ 26°～34°</p>
+            </div>
+            <!-- Day 3 -->
+            <div class="bg-white rounded-lg border shadow-sm p-4">
+              <p class="text-sm text-gray-500 mb-1">7/13（日）</p>
+              <p class="text-lg font-bold">⛅ 多雲偶雨</p>
+              <p class="text-gray-600 mt-1">🌡️ 26°～33°</p>
+            </div>
+            <!-- Day 4 -->
+            <div class="bg-white rounded-lg border shadow-sm p-4">
+              <p class="text-sm text-gray-500 mb-1">7/14（一）</p>
+              <p class="text-lg font-bold">🌧️ 午後雷雨</p>
+              <p class="text-gray-600 mt-1">🌡️ 25°～32°</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-8"
+          >
+            <div>
+              <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700"
+              >
+                <span>🌂 雨傘</span>
+                <span>🧴 防曬</span>
+                <span>👒 帽子</span>
+                <span>👕 輕便衣物</span>
+                <span>👟 透氣鞋子</span>
+                <span>💧 水壺</span>
+              </div>
+            </div>
+            <p class="text-yellow-700 mt-3">
+              ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1385,36 +1501,6 @@
         </div>
       </section>
 
-      <!-- Weather -->
-      <section id="weather" class="mb-12">
-        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            ☀️ 天氣資訊
-          </h2>
-          <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-            <p class="text-yellow-800 mb-3">
-              <strong>8月氣候：炎熱潮濕，27–32°C</strong>
-            </p>
-            <div>
-              <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
-              <div
-                class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700"
-              >
-                <span>🌂 雨傘</span>
-                <span>🧴 防曬</span>
-                <span>👒 帽子</span>
-                <span>👕 輕便衣物</span>
-                <span>👟 透氣鞋子</span>
-                <span>💧 水壺</span>
-              </div>
-            </div>
-            <p class="text-yellow-700 mt-3">
-              ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
-            </p>
-          </div>
-        </div>
-      </section>
-
       <!-- Checklist -->
       <section id="checklist" class="mb-12">
         <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
@@ -1424,66 +1510,66 @@
           <div class="grid md:grid-cols-2 gap-4">
             <!-- 左欄 -->
             <div class="space-y-2">
-              <div class="flex items-center space-x-2">
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>👕 輕便衣物、運動鞋</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>🌂 雨具（摺疊傘）</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>💧 水壺</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>👔 換洗衣物</span>
-              </div>
+              </label>
             </div>
 
             <!-- 右欄 -->
             <div class="space-y-2">
-              <div class="flex items-center space-x-2">
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>🔋 行動電源</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>🔌 萬國轉接頭（Type G）</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>🛁 盥洗用品</span>
-              </div>
-              <div class="flex items-center space-x-2">
+              </label>
+              <label class="flex items-center space-x-2 cursor-pointer">
                 <input
                   type="checkbox"
                   class="item-check w-4 h-4 text-blue-600"
                 />
                 <span>💊 個人常用藥品</span>
-              </div>
+              </label>
             </div>
           </div>
         </div>
@@ -1492,20 +1578,29 @@
       <!-- ✅ 成功彈窗 -->
       <div
         id="checklistModal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden"
       >
+        <!-- 彩帶動畫用的 canvas -->
+        <canvas
+          id="confettiCanvas"
+          class="absolute inset-0 w-full h-full pointer-events-none z-0"
+        ></canvas>
+
         <div
-          class="bg-white rounded-xl shadow-xl max-w-sm w-full p-6 text-center animate-bounceIn"
+          class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center animate-surpriseEnter relative z-10 overflow-hidden"
         >
-          <h3 class="text-2xl font-bold text-green-700 mb-2">
-            ✅ 全部勾選完成！
+          <div class="text-4xl mb-4 animate-bounce">🎉🎈🎊</div>
+
+          <h3 class="text-2xl font-extrabold text-green-700 mb-2">
+            完美！東西全準備好了
           </h3>
-          <p class="text-gray-700 mb-4">恭喜你完成所有準備 🎉</p>
+          <p class="text-gray-700 mb-4">準備開啟旅程吧！🎒✈️</p>
+
           <button
             onclick="closeChecklistModal()"
-            class="mt-2 inline-block bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full transition-all"
+            class="mt-2 inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition-all shadow-md"
           >
-            關閉
+            好的
           </button>
         </div>
       </div>
@@ -1552,70 +1647,6 @@
       </section>
 
       <!-- Location Quick Reference -->
-      <!-- <section class="mb-12">
-        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            📍 地點快速總整理
-          </h2>
-          <div class="overflow-x-auto rounded-lg border border-gray-200">
-            <table class="min-w-full text-sm text-gray-700">
-              <thead
-                class="bg-gradient-to-r from-purple-100 to-pink-100 text-gray-900"
-              >
-                <tr>
-                  <th class="px-5 py-3 text-left font-semibold">地點</th>
-                  <th class="px-5 py-3 text-left font-semibold">交通方式</th>
-                  <th class="px-5 py-3 text-left font-semibold">備註</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">飯店 → Bugis MRT</td>
-                  <td class="px-5 py-3">步行約 10 分鐘</td>
-                  <td class="px-5 py-3">-</td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">Bugis → 教會</td>
-                  <td class="px-5 py-3">
-                    MRT 約 10 分鐘、MRT 步行到教會約 10 分鐘
-                  </td>
-                  <td class="px-5 py-3">
-                    武吉士 Bugis-EW12 → 巴耶利峇 Paya Lebar-EW8
-                  </td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">飯店 → 樟宜機場</td>
-                  <td class="px-5 py-3">MRT 約 50 分鐘</td>
-                  <td class="px-5 py-3">
-                    武吉士 Bugis-EW12 → 丹那美拉 Tanah Merah-EW4 → 樟宜機場-CG2
-                  </td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">飯店 → 濱海灣花園</td>
-                  <td class="px-5 py-3">MRT 約 25 分鐘</td>
-                  <td class="px-5 py-3">
-                    梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 海灣舫 Bayfront-DT16
-                  </td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">飯店 → 牛車水</td>
-                  <td class="px-5 py-3">MRT 約 25 分鐘</td>
-                  <td class="px-5 py-3">
-                    梧槽 Rochor-DT13 / 武吉士 Bugis-DT14 → 牛車水 Chinatown-DT19
-                  </td>
-                </tr>
-                <tr class="hover:bg-gray-50">
-                  <td class="px-5 py-3">飯店 → 聖淘沙</td>
-                  <td class="px-5 py-3">MRT + 公車約 60 分鐘</td>
-                  <td class="px-5 py-3">
-                    Bugis → HarbourFront → Sentosa Express
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section> -->
       <section id="places" class="mb-12">
         <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
           <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
@@ -2314,6 +2345,7 @@
         if (allChecked) {
           // 顯示彈窗
           modal.classList.remove("hidden");
+          openChecklistModal();
         }
       }
 
@@ -2324,6 +2356,40 @@
       checkboxes.forEach((cb) => {
         cb.addEventListener("change", checkAllChecked);
       });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      function openChecklistModal() {
+        const modal = document.getElementById("checklistModal");
+        const canvas = document.getElementById("confettiCanvas");
+        modal.classList.remove("hidden");
+
+        // 設定 confetti
+        const confettiInstance = confetti.create(canvas, {
+          resize: true,
+          useWorker: true,
+        });
+
+        confettiInstance({
+          particleCount: 120,
+          spread: 80,
+          origin: { y: 0.6 },
+        });
+
+        // 可再加幾波效果
+        setTimeout(() => {
+          confettiInstance({
+            particleCount: 60,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+        }, 400);
+      }
+
+      function closeChecklistModal() {
+        const modal = document.getElementById("checklistModal");
+        modal.classList.add("hidden");
+      }
     </script>
 
     <iframe
