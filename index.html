@@ -1667,8 +1667,9 @@
               <tbody class="divide-y divide-gray-200">
                 <!-- 1 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1677,14 +1678,14 @@
                         步行約 10 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
@@ -1702,8 +1703,9 @@
 
                 <!-- 2 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1712,14 +1714,14 @@
                         MRT 約 10 分鐘、步行約 10 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
@@ -1741,8 +1743,9 @@
 
                 <!-- 3 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1751,14 +1754,14 @@
                         MRT 約 50 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
@@ -1779,8 +1782,9 @@
 
                 <!-- 4 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1789,14 +1793,14 @@
                         MRT 約 25 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
@@ -1817,8 +1821,9 @@
 
                 <!-- 5 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1827,14 +1832,14 @@
                         MRT 約 25 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
@@ -1855,8 +1860,9 @@
 
                 <!-- 6 -->
                 <tr
-                  class="block md:table-row hover:bg-gray-50"
+                  class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
+                  @click="open = !open"
                 >
                   <td class="px-5 py-3 font-medium">
                     <div>
@@ -1865,14 +1871,14 @@
                         MRT + 公車約 60 分鐘
                       </div>
                       <button
-                        @click="open = !open"
+                        @click.stop
                         class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
                       >
                         <i
                           class="fa-solid transition-transform duration-300"
                           :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
                         ></i>
-                        <span x-text="open ? '收合備註' : '展開備註'"></span>
+                        <span x-text="open ? '收合' : '展開'"></span>
                       </button>
                     </div>
                     <div
