@@ -35,7 +35,10 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <style>
       [x-cloak] {
         display: none !important;
@@ -196,6 +199,10 @@
       }
       .animate-surpriseEnter {
         animation: surpriseEnter 0.6s ease-out;
+      }
+
+      .animate__delay-0_5s {
+        animation-delay: 0.5s;
       }
     </style>
     <style>
@@ -1221,10 +1228,17 @@
     <header class="hero-gradient text-white py-20 relative">
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center">
-          <div
-            class="inline-block p-4 rounded-full bg-white bg-opacity-20 mb-6"
-          >
-            <span class="text-6xl">🇸🇬</span>
+          <div class="relative inline-block">
+            <div
+              id="clickHint"
+              class="font-bold absolute -top-6 left-1/2 transform -translate-x-1/2 text-sm text-yellow-300 font-semibold select-none whitespace-nowrap"
+            ></div>
+            <div
+              id="easterEggTrigger"
+              class="inline-block p-4 rounded-full bg-white bg-opacity-20 mb-6 cursor-pointer"
+            >
+              <span class="text-6xl">🇸🇬</span>
+            </div>
           </div>
           <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
             新加坡參訪
@@ -1237,6 +1251,42 @@
           >
             <span class="text-xl">📅 2025年8月8日 - 8月12日</span>
           </div>
+        </div>
+      </div>
+
+      <!-- 彩蛋彈窗 -->
+      <div
+        id="easterEgg"
+        class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[9999] hidden"
+      >
+        <canvas
+          id="eggConfettiCanvas"
+          class="absolute inset-0 w-full h-full pointer-events-none z-0"
+        ></canvas>
+        <div
+          class="bg-white rounded-2xl shadow-xl p-8 text-center animate__animated animate__zoomIn"
+        >
+          <h3
+            class="text-3xl font-bold text-pink-600 mb-4 animate__animated animate__heartBeat animate__delay-0_5s"
+          >
+            🎖️ 成就解鎖
+          </h3>
+          <p
+            class="text-xl text-gray-800 mb-6 animate__animated animate__fadeIn"
+          >
+            你發現了小彩蛋 🎉
+          </p>
+          <p
+            class="text-lg text-gray-700 mb-4 animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            細心 ＋ 好奇心 = 超棒的旅行夥伴！
+          </p>
+          <button
+            onclick="closeEasterEgg()"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full"
+          >
+            關閉
+          </button>
         </div>
       </div>
 
@@ -2626,6 +2676,59 @@
         fetchTodayWeather();
         fetchFutureWeather();
       });
+    </script>
+    <script>
+      let clickCount = 0;
+      const requiredClicks = 5; // 總共點幾下觸發彩蛋
+      const startHintAt = 2; // 第幾下開始顯示提示
+      const trigger = document.getElementById("easterEggTrigger");
+      const eggModal = document.getElementById("easterEgg");
+      const hint = document.getElementById("clickHint");
+
+      trigger.addEventListener("click", () => {
+        clickCount++;
+
+        if (clickCount >= startHintAt && clickCount < requiredClicks) {
+          hint.textContent = `你是不是發現了什麼... 再點 ${
+            requiredClicks - clickCount
+          } 下就知道了`;
+        } else if (clickCount >= requiredClicks) {
+          hint.textContent = ""; // 清除提示文字
+          eggModal.classList.remove("hidden");
+          triggerConfetti();
+          clickCount = 0;
+        } else {
+          hint.textContent = "";
+        }
+      });
+
+      function closeEasterEgg() {
+        eggModal.classList.add("hidden");
+      }
+
+      function triggerConfetti() {
+        const canvas = document.getElementById("eggConfettiCanvas");
+        // 設定 confetti
+        const confettiInstance = confetti.create(canvas, {
+          resize: true,
+          useWorker: true,
+        });
+
+        confettiInstance({
+          particleCount: 120,
+          spread: 80,
+          origin: { y: 0.6 },
+        });
+
+        // 可再加幾波效果
+        setTimeout(() => {
+          confettiInstance({
+            particleCount: 60,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+        }, 400);
+      }
     </script>
   </body>
 </html>
