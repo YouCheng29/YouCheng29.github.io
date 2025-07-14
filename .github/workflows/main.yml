@@ -1,0 +1,44 @@
+name: Daily Standup Report
+
+on:
+  schedule:
+    - cron: '0 1 * * 1-5'  # 平日 UTC 01:00（台灣早上 9 點）
+  workflow_dispatch:       # 手動觸發也可
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get yesterday's date
+        id: date
+        run: |
+          echo "DATE=$(date -d 'yesterday' +'%Y-%m-%d')" >> "$GITHUB_ENV"
+
+      - name: Get commit messages
+        id: commits
+        run: |
+          since="${{ env.DATE }}T00:00:00Z"
+          until="${{ env.DATE }}T23:59:59Z"
+          logs=$(git log --since="$since" --until="$until" --pretty=format:'- %s')
+          echo "LOGS<<EOF" >> $GITHUB_ENV
+          echo "$logs" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Call workflow endpoint
+        run: |
+          curl -X POST 'http://44.243.2.205/v1/workflows/run' \
+            --header 'Authorization: Bearer ${{ secrets.WORKFLOW_API_KEY }}' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+              "inputs": {
+                "date": "'"${{ env.DATE }}"'",
+                "repo": "'"${{ github.repository }}"'",
+                "author": "github-actions",
+                "commit_logs": "'"${{ env.LOGS }}"'"
+              },
+              "response_mode": "blocking",
+              "user": "yc"
+            }'
