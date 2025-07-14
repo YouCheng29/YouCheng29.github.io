@@ -2,26 +2,30 @@ name: Daily Standup Report
 
 on:
   schedule:
-    - cron: '0 1 * * 1-5'  # 平日 UTC 01:00（台灣早上 9 點）
-  workflow_dispatch:       # 手動觸發也可
+    - cron: '45 9 * * 1-5'  # 平日（週一到週五）UTC 09:45 = 台灣 17:45
+  workflow_dispatch:
 
 jobs:
   report:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      - name: Get yesterday's date
+    steps:
+      - name: Checkout work repo
+        uses: actions/checkout@v4
+        with:
+          repository: w101-admin/W101-TalentSearchHub
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Get today's date
         id: date
         run: |
-          echo "DATE=$(date -d 'yesterday' +'%Y-%m-%d')" >> "$GITHUB_ENV"
+          echo "DATE=$(date +'%Y-%m-%d')" >> "$GITHUB_ENV"
 
       - name: Get commit messages
         id: commits
         run: |
-          since="${{ env.DATE }}T00:00:00Z"
-          until="${{ env.DATE }}T23:59:59Z"
+          since="$(date +'%Y-%m-%d')T00:00:00Z"
+          until="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"  # 現在時間（UTC）
           logs=$(git log --since="$since" --until="$until" --pretty=format:'- %s')
           echo "LOGS<<EOF" >> $GITHUB_ENV
           echo "$logs" >> $GITHUB_ENV
@@ -35,10 +39,10 @@ jobs:
             --data-raw '{
               "inputs": {
                 "date": "'"${{ env.DATE }}"'",
-                "repo": "'"${{ github.repository }}"'",
+                "repo": "w101-admin/W101-TalentSearchHub",
                 "author": "github-actions",
                 "commit_logs": "'"${{ env.LOGS }}"'"
               },
-              "response_mode": "blocking",
-              "user": "yc"
+              "response_mode": "streaming",
+              "user": "abc-123"
             }'
