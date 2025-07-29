@@ -1371,6 +1371,24 @@
               2025/8/8(五)～8/12(二)
             </p>
           </div>
+
+          <!-- 倒數日期顯示 -->
+          <div
+            id="countdown"
+            class="bg-gradient-to-r from-pink-50 to-orange-50 border-l-4 border-pink-400 p-4 rounded mt-4"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-lg font-bold text-pink-800" id="countdownText">
+                  計算中...
+                </p>
+                <p class="text-sm text-pink-600" id="countdownSubtext">
+                  準備好開始這趟精彩的旅程了嗎？
+                </p>
+              </div>
+              <div class="text-4xl" id="countdownEmoji">✈️</div>
+            </div>
+          </div>
           <div class="bg-cyan-50 border-l-4 border-blue-400 p-4 rounded mt-4">
             <p class="text-gray-700 mt-1 font-bold">
               <strong>集合時間：</strong>2025/8/8(五) 05:20
@@ -1533,12 +1551,31 @@
               <ul class="text-blue-700 space-y-1">
                 <li>• 可用於 MRT、公車與部分商店</li>
                 <li>• 購買地點：樟宜機場 MRT 站</li>
-                <li>• 價格：約 S$12（含 S$5 不可退押金 + S$7 儲值）</li>
+                <li>• 價格：約 S$12 台幣276（含 S$5 空卡費 + S$7 儲值）</li>
+                <ul class="text-red-700 space-y-1">
+                  <li>
+                    •
+                    如果EZlink的儲值金少於3元，是不能用的，要加值才能用，每次最少加值10新幣
+                  </li>
+                </ul>
               </ul>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg">
               <p class="text-gray-700 mb-2">
                 • 可使用信用卡（Visa、Master）直接刷，會收1.5%刷卡手續費
+              </p>
+              <p class="text-gray-700 mb-2">
+                • 也可使用手機支付 Apple Pay 等直接刷
+              </p>
+              <p class="text-gray-700 mb-2">
+                •
+                手續費通常都是台幣 1元（1.5%），建議使用 Mastercard，每五天或是刷到 SD$15 才會請款，Visa 則是每天統計一次
+                <a
+                  href="https://vocus.cc/article/64f0a321fd897800014e930f"
+                  target="_blank"
+                  class="text-blue-600 hover:text-blue-800 underline"
+                  >了解更多</a
+                >
               </p>
               <p class="text-gray-700 mb-2">
                 • 使用 Google Maps 或「MyTransport.SG」App 查找路線
@@ -1550,6 +1587,223 @@
                 >🗺️ 新加坡地鐵圖</a
               >
             </div>
+
+            <!-- 地鐵路線表格 -->
+
+            <h3 class="font-semibold text-cyan-800 mb-3">常用地鐵路線</h3>
+            <div class="overflow-x-auto rounded-lg border border-cyan-300">
+              <table class="min-w-full text-sm text-cyan-700">
+                <thead
+                  class="bg-gradient-to-r from-cyan-100 to-emerald-100 text-cyan-900 hidden md:table-header-group"
+                >
+                  <tr>
+                    <th class="px-5 py-3 text-left font-semibold">起始站</th>
+                    <th class="px-5 py-3 text-left font-semibold">到達站</th>
+                    <th class="px-5 py-3 text-left font-semibold">時間</th>
+                    <th class="px-5 py-3 text-left font-semibold">費用</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-cyan-200">
+                  <!-- 機場 → 武吉士(飯店) -->
+                  <tr
+                    class="block md:table-row hover:bg-cyan-50 cursor-pointer"
+                    x-data="{ open: false }"
+                    @click="open = !open"
+                  >
+                    <td class="px-5 py-3 font-medium">
+                      <div>
+                        樟宜機場 → 武吉士(飯店)
+                        <div class="md:hidden text-sm text-cyan-500">
+                          約 40 分鐘 · S$ 1.71
+                        </div>
+                        <button
+                          @click.stop
+                          class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                        >
+                          <i
+                            class="fa-solid transition-transform duration-300"
+                            :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                          ></i>
+                          <span x-text="open ? '收合' : '展開'"></span>
+                        </button>
+                      </div>
+                      <div
+                        x-show="open"
+                        x-collapse
+                        x-cloak
+                        class="md:hidden mt-2 text-sm text-cyan-600"
+                      >
+                        樟宜機場-CG2 → 丹那美拉-EW4 → 武吉士-EW12
+                      </div>
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">
+                      武吉士 (Bugis)
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">約 40 分鐘</td>
+                    <td class="px-5 py-3 hidden md:table-cell">S$ 1.71</td>
+                  </tr>
+
+                  <!-- 武吉士 → 巴耶利峇(教會) -->
+                  <tr
+                    class="block md:table-row hover:bg-cyan-50 cursor-pointer"
+                    x-data="{ open: false }"
+                    @click="open = !open"
+                  >
+                    <td class="px-5 py-3 font-medium">
+                      <div>
+                        武吉士 → 巴耶利峇(教會)
+                        <div class="md:hidden text-sm text-cyan-500">
+                          約 12 分鐘 · S$ 1.03
+                        </div>
+                        <button
+                          @click.stop
+                          class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                        >
+                          <i
+                            class="fa-solid transition-transform duration-300"
+                            :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                          ></i>
+                          <span x-text="open ? '收合' : '展開'"></span>
+                        </button>
+                      </div>
+                      <div
+                        x-show="open"
+                        x-collapse
+                        x-cloak
+                        class="md:hidden mt-2 text-sm text-cyan-600"
+                      >
+                        武吉士-EW12 → 巴耶利峇-EW8
+                      </div>
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">
+                      巴耶利峇 (Paya Lebar)
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">約 12 分鐘</td>
+                    <td class="px-5 py-3 hidden md:table-cell">S$ 1.03</td>
+                  </tr>
+
+                  <!-- 明古連 → 牛車水 -->
+                  <tr
+                    class="block md:table-row hover:bg-cyan-50 cursor-pointer"
+                    x-data="{ open: false }"
+                    @click="open = !open"
+                  >
+                    <td class="px-5 py-3 font-medium">
+                      <div>
+                        明古連 → 牛車水
+                        <div class="md:hidden text-sm text-cyan-500">
+                          約 8 分鐘 · S$ 0.83
+                        </div>
+                        <button
+                          @click.stop
+                          class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                        >
+                          <i
+                            class="fa-solid transition-transform duration-300"
+                            :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                          ></i>
+                          <span x-text="open ? '收合' : '展開'"></span>
+                        </button>
+                      </div>
+                      <div
+                        x-show="open"
+                        x-collapse
+                        x-cloak
+                        class="md:hidden mt-2 text-sm text-cyan-600"
+                      >
+                        明古連-DT21 → 牛車水-DT19 (市區線)
+                      </div>
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">
+                      牛車水 (Chinatown)
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">約 8 分鐘</td>
+                    <td class="px-5 py-3 hidden md:table-cell">S$ 0.83</td>
+                  </tr>
+
+                  <!-- 明古連 → 克拉碼頭 -->
+                  <tr
+                    class="block md:table-row hover:bg-cyan-50 cursor-pointer"
+                    x-data="{ open: false }"
+                    @click="open = !open"
+                  >
+                    <td class="px-5 py-3 font-medium">
+                      <div>
+                        明古連 → 福康寧(去克拉碼頭)
+                        <div class="md:hidden text-sm text-cyan-500">
+                          約 5 分鐘 · S$ 0.83
+                        </div>
+                        <button
+                          @click.stop
+                          class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                        >
+                          <i
+                            class="fa-solid transition-transform duration-300"
+                            :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                          ></i>
+                          <span x-text="open ? '收合' : '展開'"></span>
+                        </button>
+                      </div>
+                      <div
+                        x-show="open"
+                        x-collapse
+                        x-cloak
+                        class="md:hidden mt-2 text-sm text-cyan-600"
+                      >
+                        明古連-DT21 → 福康寧-DT20
+                      </div>
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">
+                      福康寧 (Fort Canning)
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">約 5 分鐘</td>
+                    <td class="px-5 py-3 hidden md:table-cell">S$ 0.83</td>
+                  </tr>
+
+                  <!-- 牛車水 → 克拉碼頭 -->
+                  <tr
+                    class="block md:table-row hover:bg-cyan-50 cursor-pointer"
+                    x-data="{ open: false }"
+                    @click="open = !open"
+                  >
+                    <td class="px-5 py-3 font-medium">
+                      <div>
+                        牛車水 → 克拉碼頭
+                        <div class="md:hidden text-sm text-cyan-500">
+                          約 5 分鐘 · S$ 0.83
+                        </div>
+                        <button
+                          @click.stop
+                          class="md:hidden mt-2 text-blue-600 text-sm flex items-center space-x-1"
+                        >
+                          <i
+                            class="fa-solid transition-transform duration-300"
+                            :class="open ? 'fa-chevron-down' : 'fa-chevron-right'"
+                          ></i>
+                          <span x-text="open ? '收合' : '展開'"></span>
+                        </button>
+                      </div>
+                      <div
+                        x-show="open"
+                        x-collapse
+                        x-cloak
+                        class="md:hidden mt-2 text-sm text-cyan-600"
+                      >
+                        牛車水-NE4 → 克拉碼頭-NE5 (東北線)
+                      </div>
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">
+                      克拉碼頭 (Clarke Quay)
+                    </td>
+                    <td class="px-5 py-3 hidden md:table-cell">約 5 分鐘</td>
+                    <td class="px-5 py-3 hidden md:table-cell">S$ 0.83</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-sm text-cyan-600 mt-2">
+              * 費用以 EZ-Link 卡計算，信用卡會額外加手續費
+            </p>
           </div>
         </div>
       </section>
@@ -2347,6 +2601,57 @@
     </footer>
 
     <script>
+      // 倒數日期功能
+      function updateCountdown() {
+        const departureDate = new Date("2025-08-08T05:20:00");
+        const tripEndDate = new Date("2025-08-09T00:00:00"); // 8/9之後不顯示
+        const now = new Date();
+
+        const countdownElement = document.getElementById("countdown");
+        const textElement = document.getElementById("countdownText");
+        const subtextElement = document.getElementById("countdownSubtext");
+        const emojiElement = document.getElementById("countdownEmoji");
+
+        // 如果是 8/9 之後，隱藏倒數區塊
+        if (now >= tripEndDate) {
+          countdownElement.style.display = "none";
+          return;
+        }
+
+        const timeDiff = departureDate - now;
+
+        if (timeDiff > 0) {
+          // 還沒到出發日
+          const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+          if (days === 1) {
+            textElement.textContent = "明天就要出發了！";
+            subtextElement.textContent = "記得檢查行李和必需品 🧳";
+            emojiElement.textContent = "🎒";
+          } else {
+            textElement.textContent = `還有 ${days} 天就要出發了！`;
+            subtextElement.textContent = "準備好開始這趟旅程了嗎？";
+            emojiElement.textContent = "✈️";
+          }
+        } else {
+          // 出發日當天或已過出發時間
+          const sameDayEnd = new Date("2025-08-08T23:59:59");
+
+          if (now <= sameDayEnd) {
+            // 8/8 當天
+            textElement.textContent = "🎉 出發日！";
+            subtextElement.textContent = "新加坡，我們來了！";
+            emojiElement.textContent = "🇸🇬";
+          }
+        }
+      }
+
+      // 頁面載入時執行一次
+      updateCountdown();
+
+      // 每小時更新一次（避免過於頻繁）
+      setInterval(updateCountdown, 1000 * 60 * 60);
+
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
