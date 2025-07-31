@@ -51,11 +51,17 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
       .card-hover {
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
       .card-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* 統一間距 */
+      .section-spacing {
+        margin-bottom: 3rem;
       }
       .section-divider {
         background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
@@ -1456,60 +1462,73 @@
               </p>
             </div>
           </div>
-          <a
-            href="https://www.starlux-airlines.com/zh-TW/check-in-fly/baggage-information/general"
-            target="_blank"
-            class="inline-block mt-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
-          >
-            查看行李規定
-          </a>
+          <div class="mt-6">
+            <a
+              href="https://www.starlux-airlines.com/zh-TW/check-in-fly/baggage-information/general"
+              target="_blank"
+              class="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200 group"
+            >
+              <span class="mr-2">📋</span>
+              <span class="font-medium">查看行李規定</span>
+              <span
+                class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                >→</span
+              >
+            </a>
+          </div>
         </div>
       </section>
 
       <!-- Weather -->
-      <section id="weather" class="bg-white rounded-2xl shadow-xl p-6 mb-12">
-        <h2
-          class="text-2xl font-bold text-blue-700 mb-6 border-b-4 border-blue-300 inline-block pb-1"
-        >
-          📍 新加坡天氣預報
-        </h2>
+      <section id="weather" class="mb-12">
+        <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+            📍 新加坡天氣預報
+          </h2>
 
-        <!-- 今日天氣 -->
-        <div id="todayWeather" class="bg-blue-50 rounded-xl p-4 mb-8">
-          <h3 class="text-xl font-semibold text-blue-600 mb-2">☀️ 今日天氣</h3>
-          <div id="today-weather" class="space-y-1 text-gray-700">
-            載入中...
-          </div>
-        </div>
-
-        <!-- 未來四天天氣 -->
-        <div>
-          <h3 class="text-xl font-semibold text-blue-600 mb-4">
-            📅 未來四天天氣
-          </h3>
-          <div
-            id="future-weather-list"
-            class="grid gap-4 sm:grid-cols-2 md:grid-cols-2"
-          >
-            <!-- 自動填入 -->
-          </div>
-        </div>
-
-        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-8">
-          <div>
-            <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700">
-              <span>🌂 雨傘</span>
-              <span>🧴 防曬</span>
-              <span>👒 帽子</span>
-              <span>👕 輕便衣物</span>
-              <span>👟 透氣鞋子</span>
-              <span>💧 水壺</span>
+          <!-- 今日天氣 -->
+          <div id="todayWeather" class="bg-blue-50 rounded-xl p-4 mb-8">
+            <h3 class="text-xl font-semibold text-blue-600 mb-2">
+              ☀️ 今日天氣
+            </h3>
+            <div id="today-weather" class="space-y-1 text-gray-700">
+              載入中...
             </div>
           </div>
-          <p class="text-yellow-700 mt-3">
-            ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
-          </p>
+
+          <!-- 未來四天天氣 -->
+          <div>
+            <h3 class="text-xl font-semibold text-blue-600 mb-4">
+              📅 未來四天天氣
+            </h3>
+            <div
+              id="future-weather-list"
+              class="grid gap-4 sm:grid-cols-2 md:grid-cols-2"
+            >
+              <!-- 自動填入 -->
+            </div>
+          </div>
+
+          <div
+            class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mt-6"
+          >
+            <div>
+              <h3 class="font-semibold text-yellow-800 mb-2">建議攜帶：</h3>
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 gap-2 text-yellow-700"
+              >
+                <span>🌂 雨傘</span>
+                <span>🧴 防曬</span>
+                <span>👒 帽子</span>
+                <span>👕 輕便衣物</span>
+                <span>👟 透氣鞋子</span>
+                <span>💧 水壺</span>
+              </div>
+            </div>
+            <p class="text-yellow-700 mt-3">
+              ⛈️ 偶有雷陣雨，記得隨身帶水補充水分
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1529,9 +1548,14 @@
             <a
               href="https://maps.app.goo.gl/ejfoEU6mDjSqY2j66"
               target="_blank"
-              class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all mb-4 mt-2"
+              class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 group mb-4 mt-2"
             >
-              🗺️ 查看地圖
+              <span class="mr-2">🗺️</span>
+              <span class="font-medium">查看地圖</span>
+              <span
+                class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                >→</span
+              >
             </a>
             <div class="bg-yellow-100 p-3 rounded border border-yellow-300">
               <p class="text-yellow-800">⚠️ 房內未必附牙刷牙膏，請自行準備</p>
@@ -1611,12 +1635,20 @@
               <p class="text-gray-700 mb-4 leading-relaxed">
                 • 使用 Google Maps 或「MyTransport.SG」App 查找路線
               </p>
-              <a
-                href="https://tw.piliapp.com/smrt-map/"
-                target="_blank"
-                class="text-blue-600 hover:text-blue-800 underline"
-                >🗺️ 新加坡地鐵圖</a
-              >
+              <div class="mt-4">
+                <a
+                  href="https://tw.piliapp.com/smrt-map/"
+                  target="_blank"
+                  class="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-full hover:shadow-lg hover:from-cyan-600 hover:to-blue-600 transition-all duration-200 group text-sm"
+                >
+                  <span class="mr-2">🗺️</span>
+                  <span class="font-medium">新加坡地鐵圖</span>
+                  <span
+                    class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                    >→</span
+                  >
+                </a>
+              </div>
             </div>
 
             <!-- 地鐵路線表格 -->
@@ -1949,71 +1981,75 @@
           <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
             🗓 行程總覽（簡要）
           </h2>
-          <div class="space-y-4 mb-4">
+          <div class="space-y-6 mb-6">
             <!-- 完整行程按鈕 -->
-            <div class="mt-4 mb-4">
+            <div class="text-left">
               <a
                 href="detailed-itinerary.html"
-                class="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-green-600 hover:to-teal-600 transition-all duration-200 group"
+                class="inline-flex items-center bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full hover:shadow-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-200 group text-lg font-medium"
               >
-                <span class="mr-2">📅</span>
-                <span class="font-medium">查看完整詳細行程</span>
+                <span class="mr-3">📅</span>
+                <span>查看完整詳細行程</span>
                 <span
-                  class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                  class="ml-3 group-hover:translate-x-1 transition-transform duration-200"
                   >→</span
                 >
               </a>
             </div>
-
-            <div class="border-l-4 border-green-400 pl-4 py-2 bg-green-50">
-              <h3 class="font-semibold text-green-800">8/8（五）抵達新加坡</h3>
-              <p class="text-green-700">
+            <div
+              class="border-l-4 border-emerald-400 pl-4 py-3 bg-emerald-50 rounded-r-lg"
+            >
+              <h3 class="font-semibold text-emerald-800">
+                8/8（五）抵達新加坡
+              </h3>
+              <p class="text-emerald-700">
                 樟宜機場 Jewel 瀑布 → 飯店 check-in → 濱海灣花園燈光秀 →
                 金沙水舞秀
               </p>
             </div>
 
             <!-- 🔶 8/9（六） -->
-            <div class="border-l-4 border-orange-400 pl-4 py-2 bg-orange-50">
-              <h3 class="font-semibold text-orange-800">
+            <div
+              class="border-l-4 border-blue-400 pl-4 py-3 bg-blue-50 rounded-r-lg"
+            >
+              <h3 class="font-semibold text-blue-800">
                 8/9（六）神之心教會參訪
               </h3>
-              <p class="text-orange-700">
-                教會參訪與交流活動（詳細時間確認中）
-              </p>
+              <p class="text-blue-700">教會參訪與交流活動（詳細時間確認中）</p>
             </div>
 
             <!-- 🔶 8/10（日） -->
-            <div class="border-l-4 border-orange-400 pl-4 py-2 bg-orange-50">
-              <h3 class="font-semibold text-orange-800">
+            <div
+              class="border-l-4 border-purple-400 pl-4 py-3 bg-purple-50 rounded-r-lg"
+            >
+              <h3 class="font-semibold text-purple-800">
                 8/10（日）神之心教會參訪
               </h3>
-              <p class="text-orange-700">
+              <p class="text-purple-700">
                 主日禮拜與教會活動（詳細時間確認中）
               </p>
             </div>
 
-            <div class="border-l-4 border-blue-400 pl-4 py-2 bg-blue-50">
-              <h3 class="font-semibold text-blue-800">
+            <div
+              class="border-l-4 border-pink-400 pl-4 py-3 bg-pink-50 rounded-r-lg"
+            >
+              <h3 class="font-semibold text-pink-800">
                 8/11（一）文化體驗與購物
               </h3>
-              <p class="text-blue-700">
+              <p class="text-pink-700">
                 牛車水早餐購物 → 哈芝巷探索 → 魚尾獅公園 → 克拉碼頭晚餐
               </p>
             </div>
 
-            <div class="border-l-4 border-purple-400 pl-4 py-2 bg-purple-50">
-              <h3 class="font-semibold text-purple-800">8/12（二）返程準備</h3>
-              <p class="text-purple-700">
+            <div
+              class="border-l-4 border-orange-400 pl-4 py-3 bg-orange-50 rounded-r-lg"
+            >
+              <h3 class="font-semibold text-orange-800">8/12（二）返程準備</h3>
+              <p class="text-orange-700">
                 最後購物時光 → 機場辦理登機 → 14:00 返程
               </p>
             </div>
           </div>
-          <h5
-            class="text-blue-600 font-bold text-gray-800 mb-4 flex items-center"
-          >
-            ✅ 備註：五天行程已規劃完成，詳細時間表請點選上方按鈕查看完整行程！
-          </h5>
 
           <div
             class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-6 rounded-lg mt-4"
@@ -2044,7 +2080,7 @@
       </section>
 
       <!-- Location Quick Reference -->
-      <section id="places" class="mb-12">
+      <!-- <section id="places" class="mb-12">
         <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
           <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
             📍 地點快速總整理
@@ -2062,7 +2098,6 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
-                <!-- 1 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2098,7 +2133,6 @@
                   <td class="px-5 py-3 hidden md:table-cell">-</td>
                 </tr>
 
-                <!-- 2 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2138,7 +2172,6 @@
                   </td>
                 </tr>
 
-                <!-- 3 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2177,7 +2210,6 @@
                   </td>
                 </tr>
 
-                <!-- 4 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2216,7 +2248,6 @@
                   </td>
                 </tr>
 
-                <!-- 5 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2255,7 +2286,6 @@
                   </td>
                 </tr>
 
-                <!-- 6 -->
                 <tr
                   class="block md:table-row hover:bg-gray-50 cursor-pointer"
                   x-data="{ open: false }"
@@ -2298,7 +2328,7 @@
             </table>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Important Reminders -->
       <section id="reminders" class="mb-12">
@@ -2366,9 +2396,14 @@
               <a
                 href="https://www.starlux-airlines.com/zh-TW/check-in-fly/baggage-information/general"
                 target="_blank"
-                class="inline-block mt-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all"
+                class="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-200 group mt-4"
               >
-                查看行李規定
+                <span class="mr-2">📋</span>
+                <span class="font-medium">查看行李規定</span>
+                <span
+                  class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                  >→</span
+                >
               </a>
             </div>
           </div>
@@ -2530,9 +2565,14 @@
               <a
                 href="https://tw.trip.com/guide/info/%E6%96%B0%E5%8A%A0%E5%9D%A1%E6%97%85%E9%81%8A%E8%B2%BB%E7%94%A8.html"
                 target="_blank"
-                class="inline-block bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all mb-2"
+                class="inline-flex items-center bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:from-pink-600 hover:to-orange-600 transition-all duration-200 group mb-2"
               >
-                🔗 新加坡花費介紹
+                <span class="mr-2">🔗</span>
+                <span class="font-medium">新加坡花費介紹</span>
+                <span
+                  class="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                  >→</span
+                >
               </a>
               <p class="text-pink-800 mb-2">
                 <strong>平均日常開銷（估算）：</strong>
